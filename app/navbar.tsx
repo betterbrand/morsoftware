@@ -9,11 +9,11 @@ import Image from 'next/image';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'SmartAgents', href: '/smart_agents' },
-  { name: 'Compute Providers', href: '/compute_providers' },
-  { name: 'Capital Providers', href: '/capital_providers' },
-  { name: 'Code Providers', href: '/code_providers' },
-  { name: 'System Health', href: '/system_health' }
+  { name: 'SmartAgents', href: '/smart-agents' },
+  { name: 'Compute Providers', href: '/compute-providers' },
+  { name: 'Capital Providers', href: '/capital-providers' },
+  { name: 'Code Providers', href: '/code-providers' },
+  { name: 'System Health', href: '/system-health' }
 ];
 
 function classNames(...classes: string[]) {
