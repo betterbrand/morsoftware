@@ -13,18 +13,18 @@ const EmailPanel = ({ setSelectedPanel }: EmailPanelProps) => {
 
       <div className="mb-4">
         <label
-          htmlFor="new-password"
+          htmlFor="new-email"
           className="block text-sm font-medium text-gray-700"
         >
           Email Address
         </label>
         <input
-          id="new-password"
-          name="new-password"
+          id="new-email"
+          name="new-email"
           type="email"
           required
           className="mt-1 px-3 py-2 border shadow-sm focus:ring-red-500 focus:border-red-500 block w-full sm:text-sm rounded-md"
-          placeholder="Enter new password"
+          placeholder="Enter new email"
         />
       </div>
 
