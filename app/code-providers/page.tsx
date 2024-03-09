@@ -61,7 +61,8 @@ export default function PlaygroundPage() {
             {TABS.ALL_TIME}
           </div>
         </div>
-        <div className="flex justify-center text-xl mb-4 text-gray-400">
+        <div className="flex justify-center
+         mb-4 text-gray-400">
           ~ Leader Board ~
         </div>
         {selectedTab === TABS.TOP_25 &&
