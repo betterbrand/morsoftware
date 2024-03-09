@@ -92,11 +92,20 @@ export default function PlaygroundPage() {
         <div>Account</div>
         <div>Manage your account information</div>
         <div>Profile</div>
+        <div className="border-t border-gray-300 h-px"></div>{' '}
+
         <div>
           <UserCircleIcon className="block h-10 w-10 mr-4" aria-hidden="true" />
           <div>0xaaee1a9723aadb7afa2810263653a34ba2c21c7a</div>
         </div>
+
+        <div>Email address</div>
         <div className="border-t border-gray-300 h-px"></div>{' '}
+
+        <div>
+          <UserCircleIcon className="block h-10 w-10 mr-4" aria-hidden="true" />
+          <div>0xaaee1a9723aadb7afa2810263653a34ba2c21c7a</div>
+        </div>
         <div className="flex justify-center mb-4" role="group">
           <div
             onClick={() => setSelectedTab(TABS.TOP_25)}
