@@ -8,7 +8,7 @@ export default function PlaygroundPage() {
   const [inputValue, setInputValue] = useState({ weight: '', price: '' });
   const [tableData, setTableData] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     // do something and put it in tableData
   }
 
