@@ -3,6 +3,10 @@ import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import Nav from './nav';
 import { Suspense } from 'react';
+import localFont from 'next/font/local';
+import { classNames } from './helpers';
+
+const myFont = localFont({ src: './public/static/fonts/soehne-buch.woff2' });
 
 export const metadata = {
   title: 'Next.js App Router + NextAuth + Tailwind CSS',
@@ -16,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full bg-gray-50">
+    <html lang="en" className={classNames('h-full', myFont.className)}>
       <body className="h-full">
         <Suspense>
           <Nav />
