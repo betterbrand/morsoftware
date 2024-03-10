@@ -6,7 +6,7 @@ import { classNames } from '../helpers';
 import { fetchLeaderboard } from '../lib/data';
 
 const TABS = {
-  TOP_25: 'Top 25',
+  TOP_20: 'Top 20',
   ALL_TIME: 'All Time'
 };
 
@@ -16,13 +16,17 @@ type LeaderBoardListRowProps = {
   rank: number;
 };
 
-const LeaderBoardListRow = ({ developerId, rank, weights: weights }: LeaderBoardListRowProps) => {
+const LeaderBoardListRow = ({
+  developerId,
+  rank,
+  weights: weights
+}: LeaderBoardListRowProps) => {
   return (
-    <div className="flex justify-between items-center mb-4 text-gray-400">
+    <div className="flex justify-between items-center mb-4 text-gray-500">
       <div className="flex items-center">
         <div className="text-lg w-6 mr-4">{`${rank}.`}</div>
         <UserCircleIcon className="block h-10 w-10 mr-4" aria-hidden="true" />
-        <div className="text-xl">{developerId}</div>
+        <div className="text-lg">{developerId}</div>
       </div>
       <div className="text-lg">{`${weights} weights`}</div>
     </div>
@@ -30,23 +34,23 @@ const LeaderBoardListRow = ({ developerId, rank, weights: weights }: LeaderBoard
 };
 
 export default function PlaygroundPage() {
-  const [selectedTab, setSelectedTab] = useState(TABS.TOP_25);
+  const [selectedTab, setSelectedTab] = useState(TABS.TOP_20);
   const leaderboardData = fetchLeaderboard();
 
   return (
-    <main className="p-4 md:p-10 mx-auto max-w-7xl">
+    <main className={classNames('p-4 md:p-10 mx-auto max-w-7xl')}>
       <div className="max-w-[600px] mx-auto">
         <div className="flex justify-center mb-4" role="group">
           <div
-            onClick={() => setSelectedTab(TABS.TOP_25)}
+            onClick={() => setSelectedTab(TABS.TOP_20)}
             className={classNames(
               'px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 cursor-pointer',
-              selectedTab === TABS.TOP_25
+              selectedTab === TABS.TOP_20
                 ? 'z-10 ring-2 ring-blue-500 text-blue-600'
                 : ''
             )}
           >
-            {TABS.TOP_25}
+            {TABS.TOP_20}
           </div>
 
           <div
@@ -61,11 +65,13 @@ export default function PlaygroundPage() {
             {TABS.ALL_TIME}
           </div>
         </div>
-        <div className="flex justify-center
-         mb-4 text-gray-400">
+        <div
+          className="flex justify-center
+         mb-4 text-gray-500"
+        >
           ~ Leader Board ~
         </div>
-        {selectedTab === TABS.TOP_25 &&
+        {selectedTab === TABS.TOP_20 &&
           leaderboardData.last24Hours.map(({ developerId, weights, rank }) => (
             <LeaderBoardListRow
               developerId={developerId}
@@ -85,5 +91,5 @@ export default function PlaygroundPage() {
           ))}
       </div>
     </main>
-  )
-};
+  );
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import { Fragment } from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -99,15 +100,17 @@ export default function Navbar({ user }: { user: any }) {
                         <Menu>
                           <Menu.Item>
                             {({ active }) => (
-                              <button
-                                className={classNames(
-                                  active ? 'bg-gray-100' : '',
-                                  'flex w-full px-4 py-2 text-sm text-gray-700'
-                                )}
-                                // onClick={TODO}
-                              >
-                                Settings
-                              </button>
+                              <Link href="/settings">
+                                <button
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'flex w-full px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                  // onClick={TODO}
+                                >
+                                  Settings
+                                </button>
+                              </Link>
                             )}
                           </Menu.Item>
                           <Menu.Item>
