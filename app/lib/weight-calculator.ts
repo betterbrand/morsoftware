@@ -14,7 +14,107 @@
  * 
  */
 
-type EarningsPeriod = 'day' | 'month' | 'year';
+const MOR_EMISSIONS_PER_DAY = 3456; // The amount of MOR emitted per day.
+
+/**
+ * fetch12MonthEarningsChartData is a function that fetches the earnings chart of the next 12 months given a
+ * target weight and date.
+ * 
+ * @param weights The amount of weights specified.
+ * @param date The date for which the earnings are to be calculated.
+ * 
+ * @returns {{
+ *  usdEarningsInDay: number, // The amount of USD earned in that day
+ *  usdEarningsInMonth: number, // The amount of USD earned in that month
+ *  usdEarningsInYear: number, // The amount of USD earned in that year
+ *  morEarningsOnDay: number, // The amount of MOR earned in that day
+ *  morEarningsOnMonth: number, // The amount of MOR earned in that month
+ *  morEarningsOnYear: number, // The amount of MOR earned in that year
+ *  nextYearChart: Array<{
+ *    month: number,
+ *    year: number,
+ *    cumulativeWeights: number,
+ *    morEarningsOnMonth: number,
+ *    usdEarningsOnMonth: number
+ *  }>
+ * }}
+ */
+export function fetch12MonthEarningsChartData(weights: number, date: Date, usdTarget: number): {
+  usdEarningsInDay: number,
+  usdEarningsInMonth: number,
+  usdEarningsInYear: number,
+  morEarningsOnDay: number,
+  morEarningsOnMonth: number,
+  morEarningsOnYear: number,
+  nextYearChart: Array<{
+    month: number,
+    year: number,
+    cumulativeWeights: number,
+    morEarningsOnMonth: number,
+    usdEarningsOnMonth: number
+  }>
+} {
+  // Now generate the chart for the next 12 months.
+  const nextYearChart = [];
+  let currentDate = new Date(date.getTime());
+  for (let i = 0; i < 12; i++) {
+    const month = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+    const cumulativeWeights = calculateCumulativeWeights(currentDate);
+    const morEarningsOnMonth = calculateMOREarningsOnDay(weights, currentDate) * 30;
+    const usdEarningsOnMonth = morEarningsOnMonth * usdTarget;
+    nextYearChart.push({ month, year, cumulativeWeights, morEarningsOnMonth, usdEarningsOnMonth });
+    currentDate.setMonth((currentDate.getMonth() + 1) % 12);
+    currentDate.setFullYear(currentDate.getMonth() === 0 ? currentDate.getFullYear() + 1 : currentDate.getFullYear());
+  }
+
+  const morEarningsOnDay = calculateMOREarningsOnDay(weights, date);
+  const morEarningsOnMonth = morEarningsOnDay * 30;
+  const morEarningsOnYear = nextYearChart.reduce((acc, curr) => acc + curr.morEarningsOnMonth, 0);
+
+  const usdEarningsInDay = morEarningsOnDay * usdTarget;
+  const usdEarningsInMonth = morEarningsOnMonth * usdTarget;
+  const usdEarningsInYear = morEarningsOnYear * usdTarget;
+
+  return {usdEarningsInDay, usdEarningsInMonth, usdEarningsInYear, morEarningsOnDay, morEarningsOnMonth, morEarningsOnYear, nextYearChart};
+}
+
+/**
+ *  calculateUSDEarningsOnDay is a function that calculates the amount of USD a code provider
+ * is earning on the specified day based on the amount of weights they have.
+ * 
+ * @param weights The amount of weights the code provider has.
+ * @param date The date for which the earnings are to be calculated.
+ * @param usdTarget The current estimate of the value of MOR in USD.
+ */
+export function calculateUSDEarningsOnDay(weights: number, date: Date, usdTarget: number): number {
+    const morEarningsOnDay = calculateMOREarningsOnDay(weights, date);
+    return morEarningsOnDay * usdTarget;
+}
+
+/**
+ * calculateMOREarningsOnDay is a function that calculates the amount of MOR a code provider
+ * is earning on the specified day based on the amount of weights they have.
+ * 
+ * @param weights The amount of weights the code provider has.
+ * @param date The date for which the earnings are to be calculated.
+ */
+export function calculateMOREarningsOnDay(weights: number, date: Date): number {
+    const percentage = calculatePercentageOfTotalWeights(weights, date);
+    return percentage * 0.01 * MOR_EMISSIONS_PER_DAY;
+}
+
+/**
+ * calculatePercentageOfTotalWeights is a function that calculates the percentage of total weights 
+ * that a given amount of weights represents. 
+ * 
+ * @param weights The amount of weights to calculate the percentage of.
+ * @param date The date up to which the cumulative weights are to be calculated.
+ */
+export function calculatePercentageOfTotalWeights(weights: number, date: Date): number {
+    const cumulativeWeights = calculateCumulativeWeights(date);
+    return (weights / cumulativeWeights) * 100;
+}
 
 /**
  * calculateCumulativeWeights is a function that calculates the cumulative weights total in for code providers up to a given date.
@@ -42,7 +142,7 @@ export function calculateCumulativeWeights(date: Date): number {
   // First, add up all of the weights of the years leading up to the given year.
   // Keep doing this until the difference between the given year and the start year is less than 12 months.
   let currentAnnualWeights = annualWeightsStart;
-  let currentDate = date
+  let currentDate = new Date(date.getTime());
   while (monthDiff(startDate, currentDate) >= 12) {
     cumulativeWeights += currentAnnualWeights;
     currentAnnualWeights /= 2;
@@ -52,7 +152,7 @@ export function calculateCumulativeWeights(date: Date): number {
   // Next, add up all of the weights of the months leading up to the given month.
   // If the difference between the given month and the start month is less than 1, then we don't need to add any weights.
   if (monthDiff(startDate, date) >= 1) {
-    let months = monthDiff(startDate, date) + 1;
+    let months = monthDiff(startDate, currentDate) + 1;
     let monthWeights = currentAnnualWeights / 12;
     cumulativeWeights += months * monthWeights;
   }
