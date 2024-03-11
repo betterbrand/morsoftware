@@ -17,20 +17,22 @@
 const MOR_EMISSIONS_PER_DAY = 3456; // The amount of MOR emitted per day.
 
 /**
- * fetch12MonthEarningsChartData is a function that fetches the earnings chart of the next 12 months given a
- * target weight and date.
+ * fetchEarningsSummary is a function that fetches the earnings table of the next 12 months given a
+ * target weight and date, as well as a high-level summary of the earnings for the given date.
  * 
  * @param weights The amount of weights specified.
  * @param date The date for which the earnings are to be calculated.
  * 
  * @returns {{
- *  usdEarningsInDay: number, // The amount of USD earned in that day
- *  usdEarningsInMonth: number, // The amount of USD earned in that month
- *  usdEarningsInYear: number, // The amount of USD earned in that year
- *  morEarningsOnDay: number, // The amount of MOR earned in that day
- *  morEarningsOnMonth: number, // The amount of MOR earned in that month
- *  morEarningsOnYear: number, // The amount of MOR earned in that year
- *  nextYearChart: Array<{
+ *  summary: {
+ *    usdEarningsInDay: number, // The amount of USD earned in that day
+ *    usdEarningsInMonth: number, // The amount of USD earned in that month
+ *    usdEarningsInYear: number, // The amount of USD earned in that year
+ *    morEarningsOnDay: number, // The amount of MOR earned in that day
+ *    morEarningsOnMonth: number, // The amount of MOR earned in that month
+ *    morEarningsOnYear: number, // The amount of MOR earned in that year
+ *  },
+ *  nextYearTable: Array<{
  *    month: number,
  *    year: number,
  *    cumulativeWeights: number,
@@ -39,14 +41,16 @@ const MOR_EMISSIONS_PER_DAY = 3456; // The amount of MOR emitted per day.
  *  }>
  * }}
  */
-export function fetch12MonthEarningsChartData(weights: number, date: Date, usdTarget: number): {
-  usdEarningsInDay: number,
-  usdEarningsInMonth: number,
-  usdEarningsInYear: number,
-  morEarningsOnDay: number,
-  morEarningsOnMonth: number,
-  morEarningsOnYear: number,
-  nextYearChart: Array<{
+export function fetchEarningsSummary(weights: number, date: Date, usdTarget: number): {
+  summary: {
+    usdEarningsInDay: number,
+    usdEarningsInMonth: number,
+    usdEarningsInYear: number,
+    morEarningsOnDay: number,
+    morEarningsOnMonth: number,
+    morEarningsOnYear: number,
+  },
+  nextYearTable: Array<{
     month: number,
     year: number,
     cumulativeWeights: number,
@@ -54,8 +58,8 @@ export function fetch12MonthEarningsChartData(weights: number, date: Date, usdTa
     usdEarningsOnMonth: number
   }>
 } {
-  // Now generate the chart for the next 12 months.
-  const nextYearChart = [];
+  // Now generate the table for the next 12 months.
+  const nextYearTable = [];
   let currentDate = new Date(date.getTime());
   for (let i = 0; i < 12; i++) {
     const month = currentDate.getMonth();
@@ -63,20 +67,30 @@ export function fetch12MonthEarningsChartData(weights: number, date: Date, usdTa
     const cumulativeWeights = calculateCumulativeWeights(currentDate);
     const morEarningsOnMonth = calculateMOREarningsOnDay(weights, currentDate) * 30;
     const usdEarningsOnMonth = morEarningsOnMonth * usdTarget;
-    nextYearChart.push({ month, year, cumulativeWeights, morEarningsOnMonth, usdEarningsOnMonth });
+    nextYearTable.push({ month, year, cumulativeWeights, morEarningsOnMonth, usdEarningsOnMonth });
     currentDate.setMonth((currentDate.getMonth() + 1) % 12);
     currentDate.setFullYear(currentDate.getMonth() === 0 ? currentDate.getFullYear() + 1 : currentDate.getFullYear());
   }
 
   const morEarningsOnDay = calculateMOREarningsOnDay(weights, date);
   const morEarningsOnMonth = morEarningsOnDay * 30;
-  const morEarningsOnYear = nextYearChart.reduce((acc, curr) => acc + curr.morEarningsOnMonth, 0);
+  const morEarningsOnYear = nextYearTable.reduce((acc, curr) => acc + curr.morEarningsOnMonth, 0);
 
   const usdEarningsInDay = morEarningsOnDay * usdTarget;
   const usdEarningsInMonth = morEarningsOnMonth * usdTarget;
   const usdEarningsInYear = morEarningsOnYear * usdTarget;
 
-  return {usdEarningsInDay, usdEarningsInMonth, usdEarningsInYear, morEarningsOnDay, morEarningsOnMonth, morEarningsOnYear, nextYearChart};
+  return {
+    summary: {
+      usdEarningsInDay,
+      usdEarningsInMonth,
+      usdEarningsInYear,
+      morEarningsOnDay,
+      morEarningsOnMonth,
+      morEarningsOnYear,
+    },
+    nextYearTable,
+  };
 }
 
 /**
