@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 import { classNames } from '../../helpers';
 
-export default function PlaygroundPage() {
+export default function CalculatorPage() {
   const [inputValue, setInputValue] = useState({ weight: '', price: '' });
   const [tableData, setTableData] = useState([]);
 
