@@ -4,6 +4,24 @@
  * We can split this up later once we have a better understanding of the data fetching requirements.
  */
 
+/**
+ * Fetches the leaderboard data.
+ * 
+ * @returns {{
+ *   last24Hours: Array<{
+ *     developerId: string,
+ *     developerAvatarUrl: string,
+ *     weights: number,
+ *     rank: number
+ *   }>,
+ *   allTime: Array<{
+ *     developerId: string,
+ *     developerAvatarUrl: string,
+ *     weights: number,
+ *     rank: number
+ *   }>
+ * }} - Returns an object containing the data for the leaderboard.
+ */
 export function fetchLeaderboard() {
   // TODO: Replace with smart contract call/database query.
   const leaderboardData = {
