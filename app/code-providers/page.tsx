@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { UserCircleIcon } from '@heroicons/react/24/outline';
 import { classNames } from '../helpers';
 import { fetchLeaderboard } from '../lib/data';
@@ -39,6 +40,20 @@ export default function CodeProvidersPage() {
 
   return (
     <main className={classNames('p-4 md:p-10 w-full grow overflow-y-scroll')}>
+      <div className='max-w-[600px] mx-auto'>
+        <div className="flex justify-center mb-4 text-gray-500">
+          Code Provider Earnings Estimate Calculator
+        </div>
+        <Link href="/code-providers/calculator">
+          <button
+            type="button"
+            className="mr-2 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            Calculator
+          </button>
+        </Link>
+      </div>
+      <hr className="my-10" />
       <div className="max-w-[600px] mx-auto">
         <div className="flex justify-center mb-4" role="group">
           <div
