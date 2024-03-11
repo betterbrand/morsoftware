@@ -10,17 +10,17 @@ export default function PlaygroundPage() {
 
   const handleSubmit = () => {
     // do something and put it in tableData
-  }
+  };
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
       <div className="max-w-[1080px] mx-auto">
-        <div className="flex justify-center text-3xl mb-4">Code Weights</div>
+        <div className="flex justify-center text-2xl mb-4 text-gray-500">Code Weights</div>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col items-center mb-8"
+          className="flex flex-col items-center mb-8 text-gray-500"
         >
-          <label className="mb-1" htmlFor="weight">
+          <label className="mb-1 text-base" htmlFor="weight">
             Input User Weights
           </label>
           <input
@@ -33,7 +33,7 @@ export default function PlaygroundPage() {
             }
           />
 
-          <label className="mb-1" htmlFor="price">
+          <label className="mb-1 text-base" htmlFor="price">
             MOR Price
           </label>
           <input
@@ -53,8 +53,8 @@ export default function PlaygroundPage() {
             Submit
           </button>
         </form>
-        <table className="table-fixed w-full">
-          <thead>
+        <table className="table-fixed w-full text-sm text-left text-gray-500 dark:text-gray-400 text-center">
+          <thead className="text-xs text-gray-700 uppercase  dark:text-gray-400">
             <tr>
               <th>Month</th>
               <th>MOR Emissions to Code</th>
@@ -68,14 +68,14 @@ export default function PlaygroundPage() {
           </thead>
           <tbody>
             <tr>
-              <td className="text-center">1</td>
-              <td className="text-center">104,773</td>
-              <td className="text-center">12,500</td>
-              <td className="text-center">1</td>
-              <td className="text-center">8.38</td>
-              <td className="text-center">$10</td>
-              <td className="text-center">$84</td>
-              <td className="text-center">$84</td>
+              <td>1</td>
+              <td>104,773</td>
+              <td>12,500</td>
+              <td>1</td>
+              <td>8.38</td>
+              <td>$10</td>
+              <td>$84</td>
+              <td>$84</td>
             </tr>
           </tbody>
         </table>

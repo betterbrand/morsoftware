@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={classNames('h-full', myFont.className)}>
-      <body className="h-full">
+      <body className="h-full flex flex-col">
         <Suspense>
           <Nav />
         </Suspense>
