@@ -1,4 +1,4 @@
-import { calculateCumulativeWeights, fetch12MonthEarningsChartData } from './weight-calculator';
+import { calculateCumulativeWeights, fetchEarningsSummary } from './weight-calculator';
 
 describe('calculateCumulativeWeights', () => {
   it('should return 0 when the date is before the start year', () => {
@@ -49,17 +49,19 @@ describe('calculateCumulativeWeights', () => {
     expect(cumulativeWeights - 26042).toBeLessThan(1);
   });
 
-  it('should return the correct chart for the next 12 months', () => {
+  it('should return the correct summary for the next 12 months', () => {
     const date = new Date(2024, 3); // April 2024
-    const chart = fetch12MonthEarningsChartData(100, date, 10);
-    expect(chart).toEqual({
-      usdEarningsInDay: 207.36,
-      usdEarningsInMonth: 6220.8,
-      usdEarningsInYear: 50409.758655458,
-      morEarningsOnDay: 20.736,
-      morEarningsOnMonth: 622.08,
-      morEarningsOnYear: 5040.9758655458,
-      nextYearChart: [
+    const summary = fetchEarningsSummary(100, date, 10);
+    expect(summary).toEqual({
+      summary: {
+        usdEarningsInDay: 207.36,
+        usdEarningsInMonth: 6220.8,
+        usdEarningsInYear: 50409.758655458,
+        morEarningsOnDay: 20.736,
+        morEarningsOnMonth: 622.08,
+        morEarningsOnYear: 5040.9758655458,
+      },
+      nextYearTable: [
         {
           month: 3,
           year: 2024,
