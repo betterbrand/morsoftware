@@ -25,7 +25,7 @@ export default function Navbar({ user }: { user: any }) {
   const pathname = usePathname();
 
   return (
-    <Disclosure as="nav" className="bg-white shadow-sm">
+    <Disclosure as="nav" className="bg-white shadow-sm flex justify-center">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

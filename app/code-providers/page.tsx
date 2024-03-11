@@ -22,13 +22,13 @@ const LeaderBoardListRow = ({
   weights: weights
 }: LeaderBoardListRowProps) => {
   return (
-    <div className="flex justify-between items-center mb-4 text-gray-500">
+    <div className="flex justify-between items-center mb-4 text-gray-500 text-base">
       <div className="flex items-center">
-        <div className="text-lg w-6 mr-4">{`${rank}.`}</div>
+        <div className=" w-6 mr-4">{`${rank}.`}</div>
         <UserCircleIcon className="block h-10 w-10 mr-4" aria-hidden="true" />
-        <div className="text-lg">{developerId}</div>
+        <div>{developerId}</div>
       </div>
-      <div className="text-lg">{`${weights} weights`}</div>
+      <div>{`${weights} weights`}</div>
     </div>
   );
 };
@@ -38,7 +38,7 @@ export default function PlaygroundPage() {
   const leaderboardData = fetchLeaderboard();
 
   return (
-    <main className={classNames('p-4 md:p-10 mx-auto max-w-7xl')}>
+    <main className={classNames('p-4 md:p-10 w-full grow overflow-y-scroll')}>
       <div className="max-w-[600px] mx-auto">
         <div className="flex justify-center mb-4" role="group">
           <div
