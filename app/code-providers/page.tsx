@@ -33,7 +33,7 @@ const LeaderBoardListRow = ({
   );
 };
 
-export default function PlaygroundPage() {
+export default function CodeProvidersPage() {
   const [selectedTab, setSelectedTab] = useState(TABS.TOP_20);
   const leaderboardData = fetchLeaderboard();
 
