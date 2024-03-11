@@ -44,7 +44,7 @@ export default function PlaygroundPage() {
           <div
             onClick={() => setSelectedTab(TABS.TOP_20)}
             className={classNames(
-              'px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 cursor-pointer',
+              'px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 cursor-pointer',
               selectedTab === TABS.TOP_20
                 ? 'z-10 ring-2 ring-blue-500 text-blue-600'
                 : ''
@@ -56,7 +56,7 @@ export default function PlaygroundPage() {
           <div
             onClick={() => setSelectedTab(TABS.ALL_TIME)}
             className={classNames(
-              'px-4 py-2 text-sm font-medium text-gray-900 bg-white rounded-r-lg border border-gray-200 hover:bg-gray-100 cursor-pointer',
+              'px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-r-lg border border-gray-200 hover:bg-gray-100 cursor-pointer',
               selectedTab === TABS.ALL_TIME
                 ? 'z-10 ring-2 ring-blue-500 text-blue-600'
                 : ''
