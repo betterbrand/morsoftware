@@ -14,7 +14,7 @@ model User {
   name          String
   email         String   @unique
   walletAddress String
-  githubUrl     String
+  githubId     String
   avatarImgUrl  String?
   createdAt     DateTime @default(now())
 }
