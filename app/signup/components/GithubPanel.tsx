@@ -1,16 +1,64 @@
 import { PANELS } from '../constants';
 import GithubCatLogoWhite from '../../public/images/github-cat-logo-white.svg';
 import Image from 'next/image';
+import { FormValues } from '../types';
+import { useRouter } from 'next/navigation';
+import { MouseEvent } from 'react';
+import { signIn, getSession } from 'next-auth/react';
 
-type EmailPanelProps = { setSelectedPanel: (panel: string) => void };
+type GithubPanelProps = { setSelectedPanel: (panel: string) => void, signupFormFields: FormValues };
 
-const GithubPanel = ({ setSelectedPanel }: EmailPanelProps) => {
+const GithubPanel = ({ setSelectedPanel, signupFormFields }: GithubPanelProps) => {
+  const router = useRouter();
+
+  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    try {
+      const githubSignInResponse = await signIn('github', { redirect: false });
+
+      if (githubSignInResponse?.ok) {
+        const session = await getSession();
+
+        if (session) {
+          const githubId = session.user?.name;
+
+          const registrationResponse = await fetch('/api/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              ...signupFormFields,
+              githubId: githubId,
+            }),
+          });
+
+          if (registrationResponse.ok) {
+            // User registration successful
+            router.push('/dashboard');
+          } else {
+            // Handle registration error
+            console.error('Registration failed');
+          }
+        } else {
+          // Handle session error
+          console.error('Failed to retrieve session');
+        }
+      } else {
+        // Handle GitHub authentication error
+        console.error('GitHub authentication failed');
+      }
+    } catch (error) {
+      console.error('Error during registration:', error);
+    }
+  };
   return (
     <div className="flex flex-col  w-full h-full">
       <div className="text-xl font-semibold">Connect your Github account</div>
       <div className="grow flex justify-center items-center">
         <button
-          onClick={() => setSelectedPanel(PANELS.MAIN)}
+          onClick={handleSubmit}
           type="submit"
           className="inline-flex items-center justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         >
