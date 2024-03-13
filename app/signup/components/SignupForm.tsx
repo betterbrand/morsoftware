@@ -39,28 +39,28 @@ const SignupForm = ({
           htmlFor="name"
           className="block mb-2 text-sm font-medium text-gray-900"
         >
-          Name
+          Username
         </label>
         <input
           id="name"
-          placeholder="Enter your name"
+          placeholder="Enter your username"
           className={`input ${
-            errors.name ? 'border-red-500' : 'border-gray-300'
+            errors.username ? 'border-red-500' : 'border-gray-300'
           } block w-full px-4 py-2 text-sm border rounded-md focus:ring-blue-500 focus:border-blue-500`}
-          {...register('name', {
-            required: 'name is required',
+          {...register('username', {
+            required: 'username is required',
             minLength: {
               value: 1,
-              message: 'name must be at least 1 characters long'
+              message: 'username must be at least 1 characters long'
             },
             pattern: {
               value: /^[A-Za-z0-9]+$/i,
-              message: 'name must not contain special characters'
+              message: 'username must not contain special characters'
             }
           })}
         />
-        {errors.name && (
-          <p className="mt-2 text-sm text-red-600">{errors.name.message}</p>
+        {errors.username && (
+          <p className="mt-2 text-sm text-red-600">{errors.username.message}</p>
         )}
       </div>
 

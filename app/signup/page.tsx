@@ -32,10 +32,10 @@ const Breadcrumb = ({ selectedPanel }: BreadcrumbProps) => {
   );
 };
 
-export default function SettingsPage() {
+export default function SignUpPage() {
   const [selectedPanel, setSelectedPanel] = useState(PANELS.MAIN);
   const [signupFormFields, setSignupFormFields] = useState<FormValues>({
-    name: '',
+    username: '',
     email: '',
     walletAddress: '',
     tosAccepted: false
@@ -52,7 +52,7 @@ export default function SettingsPage() {
           />
         )}
         {selectedPanel === PANELS.GITHUB && (
-          <GithubPanel setSelectedPanel={setSelectedPanel} />
+          <GithubPanel setSelectedPanel={setSelectedPanel} signupFormFields={signupFormFields} />
         )}
         <Breadcrumb selectedPanel={selectedPanel} />
       </Card>

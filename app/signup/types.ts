@@ -1,5 +1,5 @@
 export type FormValues = {
-  name: string;
+  username: string;
   email: string;
   tosAccepted: boolean;
   walletAddress: string;
