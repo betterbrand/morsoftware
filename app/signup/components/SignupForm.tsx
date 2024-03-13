@@ -53,10 +53,6 @@ const SignupForm = ({
               value: 1,
               message: 'name must be at least 1 characters long'
             },
-            // maxLength: {
-            //   value: 20,
-            //   message: 'name must not exceed 20 characters'
-            // },
             pattern: {
               value: /^[A-Za-z0-9]+$/i,
               message: 'name must not contain special characters'
