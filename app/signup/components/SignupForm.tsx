@@ -1,63 +1,70 @@
-import React from 'react';
+import React, { FormHTMLAttributes, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { PANELS } from '../constants';
-
-type FormValues = {
-  username: string;
-  email: string;
-  tosAccepted: boolean;
-  walletAddress: string;
-};
+import { FormValues } from '../types';
 
 type SignupFormProps = {
   setSelectedPanel: React.Dispatch<React.SetStateAction<string>>;
+  setSignupFormFields: React.Dispatch<React.SetStateAction<FormValues>>;
+  signupFormFields: FormValues;
 };
 
-const SignupForm = ({ setSelectedPanel }: SignupFormProps) => {
+const SignupForm = ({
+  setSelectedPanel,
+  setSignupFormFields,
+  signupFormFields
+}: SignupFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
+    reset
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
     setSelectedPanel(PANELS.GITHUB);
+    setSignupFormFields((prevFormData) => ({ ...prevFormData, ...data }));
   };
 
+  useEffect(() => {
+    reset(signupFormFields);
+  }, [signupFormFields, reset]);
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="max-w-lg mx-auto my-10">
-      <div className="mb-6">Register as a Developer</div>
+    <form onSubmit={handleSubmit(onSubmit)} className=" grow">
+      <div className="mb-6 text-xl font-semibold">Register as a Developer</div>
       <div className="mb-6">
         <label
-          htmlFor="username"
+          htmlFor="name"
           className="block mb-2 text-sm font-medium text-gray-900"
         >
-          Username
+          Name
         </label>
         <input
-          id="username"
+          id="name"
+          placeholder="Enter your name"
           className={`input ${
-            errors.username ? 'border-red-500' : 'border-gray-300'
+            errors.name ? 'border-red-500' : 'border-gray-300'
           } block w-full px-4 py-2 text-sm border rounded-md focus:ring-blue-500 focus:border-blue-500`}
-          {...register('username', {
-            required: 'Username is required',
+          {...register('name', {
+            required: 'name is required',
             minLength: {
-              value: 3,
-              message: 'Username must be at least 3 characters long'
+              value: 1,
+              message: 'name must be at least 1 characters long'
             },
-            maxLength: {
-              value: 20,
-              message: 'Username must not exceed 20 characters'
-            },
+            // maxLength: {
+            //   value: 20,
+            //   message: 'name must not exceed 20 characters'
+            // },
             pattern: {
               value: /^[A-Za-z0-9]+$/i,
-              message: 'Username must not contain special characters'
+              message: 'name must not contain special characters'
             }
           })}
         />
-        {errors.username && (
-          <p className="mt-2 text-sm text-red-600">{errors.username.message}</p>
+        {errors.name && (
+          <p className="mt-2 text-sm text-red-600">{errors.name.message}</p>
         )}
       </div>
 
@@ -71,6 +78,7 @@ const SignupForm = ({ setSelectedPanel }: SignupFormProps) => {
         <input
           id="email"
           type="email"
+          placeholder="Enter your email"
           className={`input ${
             errors.email ? 'border-red-500' : 'border-gray-300'
           } block w-full px-4 py-2 text-sm border rounded-md focus:ring-blue-500 focus:border-blue-500`}
@@ -96,6 +104,7 @@ const SignupForm = ({ setSelectedPanel }: SignupFormProps) => {
         </label>
         <input
           id="walletAddress"
+          placeholder="Enter your eth wallet address"
           className={`input ${
             errors.walletAddress ? 'border-red-500' : 'border-gray-300'
           } block w-full px-4 py-2 text-sm border rounded-md focus:ring-blue-500 focus:border-blue-500`}
