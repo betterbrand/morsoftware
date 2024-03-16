@@ -1,15 +1,11 @@
 'use client';
-import { sql } from '@vercel/postgres';
 import { MouseEvent } from 'react';
 
-import { Card, Title, Text } from '@tremor/react';
-import Search from './search';
-import UsersTable from './table';
 import Image from 'next/image';
 import GithubCatLogoWhite from './public/images/github-cat-logo-white.svg';
 import MorLogo from './public/images/mor-logo.svg';
 
-import { signIn, getSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
 interface User {
   id: number;
@@ -27,6 +23,8 @@ export default function IndexPage({
 
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    signIn('github')
   };
 
   return (
