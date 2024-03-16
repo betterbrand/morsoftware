@@ -22,6 +22,12 @@ function classNames(...classes: string[]) {
 export default function Navbar({ user }: { user: any }) {
   const pathname = usePathname();
 
+  console.log('xcxc user', user);
+  // if user is not logged in, do not show the navbar
+  if (!user) {
+    return null;
+  }
+
   return (
     <Disclosure as="nav" className="bg-white shadow-sm flex justify-center">
       {({ open }) => (
