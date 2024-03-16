@@ -1,5 +1,7 @@
 import NextAuth from 'next-auth';
 import GitHub from 'next-auth/providers/github';
+import { NextRequest, NextResponse } from 'next/server';
+import { Session } from 'next-auth';
 
 export const {
   handlers: { GET, POST },
@@ -13,5 +15,21 @@ export const {
   ],
   pages: {
     signIn: '/sign-in'
+  },
+  callbacks: {
+    async jwt({ token, user, account, profile, isNewUser }) {
+      // TODO: Handle user creation here
+      return token
+    }
   }
 });
+
+export function withAuth(handler: (req: NextRequest, session: Session) => Promise<NextResponse>) {
+  return async function (request: NextRequest) {
+    const session = await auth();
+    if (!session?.user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+    return handler(request, session);
+  };
+}
