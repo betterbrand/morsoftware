@@ -10,9 +10,6 @@ import GithubCatLogoWhite from './public/images/github-cat-logo-white.svg';
 import MorLogo from './public/images/mor-logo.svg';
 
 import { signIn, getSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-
-useRouter;
 
 interface User {
   id: number;
@@ -27,8 +24,6 @@ export default function IndexPage({
   searchParams: { q: string };
 }) {
   const search = searchParams.q ?? '';
-
-  // const router = useRouter();
 
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
