@@ -12,11 +12,7 @@ import DarkLogo from './public/images/dark-logo.png';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'SmartAgents', href: '/smart-agents' },
-  { name: 'Compute Providers', href: '/compute-providers' },
-  { name: 'Capital Providers', href: '/capital-providers' },
-  { name: 'Code Providers', href: '/code-providers' },
-  { name: 'System Health', href: '/system-health' }
+  { name: 'Code Providers', href: '/code-providers' }
 ];
 
 function classNames(...classes: string[]) {
