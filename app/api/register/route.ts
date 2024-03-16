@@ -1,22 +1,18 @@
 import { PrismaClient } from '@prisma/client';
-import { auth } from '../../auth';
-import { NextResponse } from 'next/server';
+import { withAuth } from '../../auth';
+import { NextRequest, NextResponse } from 'next/server';
+import { Session } from 'next-auth';
 
 const prisma = new PrismaClient();
 
 /**
- * Registers a new user on signup
+ * Registers a new user with a new developer id or signs them in if they already exist
  * 
  * @param request request json with fields username, email, walletAddress, and githubId
  * @returns 
  */
-export async function POST(request: Request) {
-  const session = await auth();
+export const PUT = withAuth(async (request: NextRequest, session: Session) => {
   const data = await request.json();
-
-  if (!session?.user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  }
 
   try {
     const user = await prisma.user.create({
@@ -33,4 +29,4 @@ export async function POST(request: Request) {
     console.error('Error creating user:', error);
     return NextResponse.json({ error: 'An error occurred' }, { status: 500 });
   }
-}
+});
