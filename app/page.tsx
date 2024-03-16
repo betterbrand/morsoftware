@@ -52,10 +52,6 @@ export default function IndexPage({
         />
         Connect your Github account
       </button>
-      {/* <Search />
-      <Card className="mt-6">
-        <UsersTable users={[]} />
-      </Card> */}
     </main>
   );
 }
