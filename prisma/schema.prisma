@@ -11,10 +11,10 @@ datasource db {
 model User {
   id            Int      @id @default(autoincrement())
   developerId   String   @unique
-  username          String?
-  email         String?   @unique
+  username      String?
+  email         String?  @unique
   walletAddress String?
-  githubId     String
+  githubId      String   @unique
   avatarImgUrl  String?
   createdAt     DateTime @default(now())
 }

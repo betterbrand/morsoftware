@@ -2,6 +2,7 @@ import NextAuth from 'next-auth';
 import GitHub from 'next-auth/providers/github';
 import { NextRequest, NextResponse } from 'next/server';
 import { Session } from 'next-auth';
+import { createUserIfNotExists } from './lib/db/users';
 
 export const {
   handlers: { GET, POST },
@@ -13,13 +14,18 @@ export const {
       clientSecret: process.env.OAUTH_CLIENT_SECRET as string
     })
   ],
-  pages: {
-    signIn: '/sign-in'
-  },
   callbacks: {
     async jwt({ token, user, account, profile, isNewUser }) {
-      // TODO: Handle user creation here
-      return token
+      if (account?.provider === 'github') {
+        token.githubId = profile?.login?.toString();
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (token.githubId) {
+        await createUserIfNotExists(token.githubId.toString());
+      }
+      return session;
     }
   }
 });
