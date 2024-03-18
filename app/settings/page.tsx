@@ -69,7 +69,7 @@ export default function SettingsPage() {
   return (
     <main className="p-4 md:p-10 flex justify-center">
       {/* <div className="max-w-[880px] max-h-[660px] mx-auto"> */}
-      <Card className="py-3 px-8 max-w-[880px] h-screen max-h-[600px] overflow-y-scroll">
+      <Card className="py-3 px-8 max-w-[880px] h-screen max-h-[600px] overflow-y-scroll bg-slate-900">
         {selectedPanel === PANELS.MAIN && (
           <MainPanel setSelectedPanel={setSelectedPanel} />
         )}

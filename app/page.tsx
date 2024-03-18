@@ -1,4 +1,3 @@
-'use client';
 import { MouseEvent } from 'react';
 
 import Image from 'next/image';
@@ -7,6 +6,9 @@ import MorLogo from './public/images/mor-logo.svg';
 
 import { signIn } from 'next-auth/react';
 
+import GithubLoginButton from './components/githubLoginButton';
+import { auth } from './auth';
+import { redirect } from 'next/navigation';
 interface User {
   id: number;
   name: string;
@@ -14,18 +16,17 @@ interface User {
   email: string;
 }
 
-export default function IndexPage({
+export default async function IndexPage({
   searchParams
 }: {
   searchParams: { q: string };
 }) {
-  const search = searchParams.q ?? '';
+  // if user is already logged in, redirect to /settings
+  const session = await auth();
 
-  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    signIn('github')
-  };
+  if (session?.user) {
+    redirect('/settings');
+  }
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl flex flex-col items-center">
@@ -37,19 +38,7 @@ export default function IndexPage({
       <div className="text-base mb-12">
         Sign into github to register as a DEVELOPER for the Morpheus AI project
       </div>
-      <button
-        onClick={handleSubmit}
-        type="submit"
-        className="inline-flex items-center justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-900 hover:bg-emerald-950 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-      >
-        <Image
-          src={GithubCatLogoWhite}
-          alt="Github logo"
-          height={32}
-          style={{ marginRight: 8 }}
-        />
-        Connect your Github account
-      </button>
+      <GithubLoginButton />
     </main>
   );
 }

@@ -11,8 +11,8 @@ import Image from 'next/image';
 import DarkLogo from './public/images/dark-logo.png';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Code Providers', href: '/code-providers' }
+  { name: 'Leaderboard', href: '/code-providers/leaderboard' },
+  { name: 'Calculator', href: '/code-providers/calculator' }
 ];
 
 function classNames(...classes: string[]) {
@@ -28,7 +28,7 @@ export default function Navbar({ user }: { user: any }) {
   }
 
   return (
-    <Disclosure as="nav" className="bg-white shadow-sm flex justify-center">
+    <Disclosure as="nav" className=" shadow-sm flex justify-center">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -44,13 +44,13 @@ export default function Navbar({ user }: { user: any }) {
                         <Menu
                           key={item.name}
                           as="div"
-                          className="relative ml-3"
+                          className="relative ml-3 "
                         >
                           <Menu.Button
                             className={classNames(
                               pathname.includes(item.href)
-                                ? 'border-slate-500 text-gray-900'
-                                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                                ? 'border-slate-500 text-white'
+                                : 'border-transparent text-white hover:text-gray-200 hover:border-gray-300',
                               'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium h-full'
                             )}
                           >
@@ -108,8 +108,8 @@ export default function Navbar({ user }: { user: any }) {
                         href={item.href}
                         className={classNames(
                           pathname === item.href
-                            ? 'border-slate-500 text-gray-900'
-                            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300',
+                            ? 'border-slate-500 text-white'
+                            : 'border-transparent text-gray-500 hover:text-white hover:border-gray-300',
                           'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
                         )}
                         aria-current={
@@ -123,7 +123,7 @@ export default function Navbar({ user }: { user: any }) {
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
-                <Menu as="div" className="relative ml-3">
+                <Menu as="div" className="relative ml-3 z-20">
                   <div>
                     <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">
                       <span className="sr-only">Open user menu</span>
