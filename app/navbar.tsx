@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { signIn, signOut } from 'next-auth/react';
 import Image from 'next/image';
 
-import DarkLogo from './public/images/dark-logo.png';
+import DarkLogo from '../public/images/dark-logo.png';
 
 const navigation = [
   { name: 'Leaderboard', href: '/code-providers/leaderboard' },
