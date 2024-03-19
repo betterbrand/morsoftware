@@ -1,4 +1,0 @@
--- AlterTable
-ALTER TABLE "User" ALTER COLUMN "email" DROP NOT NULL,
-ALTER COLUMN "walletAddress" DROP NOT NULL,
-ALTER COLUMN "username" DROP NOT NULL;
