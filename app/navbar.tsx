@@ -103,13 +103,13 @@ export default function Navbar({ user }: { user: any }) {
     <Disclosure as="nav" className=" shadow-sm flex justify-center">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
                   <Image src={DarkLogo} alt="Logo" width={32} height={32} />
                 </div>
-                <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                {/* <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => {
                     if (item.name === 'Code Providers') {
                       return (
@@ -192,7 +192,7 @@ export default function Navbar({ user }: { user: any }) {
                       </a>
                     );
                   })}
-                </div>
+                </div> */}
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <Menu as="div" className="relative ml-3 z-20">
@@ -281,7 +281,7 @@ export default function Navbar({ user }: { user: any }) {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 pt-2 pb-3">
+            {/* <div className="space-y-1 pt-2 pb-3">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -298,7 +298,7 @@ export default function Navbar({ user }: { user: any }) {
                   {item.name}
                 </Disclosure.Button>
               ))}
-            </div>
+            </div> */}
             <div className="border-t border-gray-200 pt-4 pb-3">
               {user ? (
                 <>
