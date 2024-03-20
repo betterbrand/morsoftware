@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from './auth';
+import { auth } from './app/auth';
 
 export default async function middleware(req: NextRequest) {
   // redirect if the token is invalid
