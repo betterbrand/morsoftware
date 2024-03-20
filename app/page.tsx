@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react';
 
 import Image from 'next/image';
-import BackgroundVideo from '../public/videos/background-video.mp4';
+import BackgroundVideo from '../public/videos/black_background.mp4';
 // import MorLogo from '../public/images/mor-logo.svg';
 
 import { signIn } from 'next-auth/react';
@@ -29,7 +29,7 @@ export default async function IndexPage({
   }
 
   return (
-    <main className="p-4 md:p-10 mx-auto max-w-7xl h-[60vh] flex flex-col items-center justify-center">
+    <main className="p-4 md:p-10 mx-auto max-w-7xl h-[100vh] flex flex-col items-center justify-center">
       <video
         autoPlay
         muted
@@ -46,10 +46,10 @@ export default async function IndexPage({
         MOR Software
       </div>
       <div className="text-base text-gray-400">
-        Become a contributor to the future of open source something something
+        Become a contributor to the future of open source
       </div>
-      <div className="text-base mb-12 text-gray-400">
-        Sign into github to register as a DEVELOPER for the Morpheus AI project
+      <div className="text-base mb-12 text-gray-400 text-center">
+       Attach your Github to register as a DEVELOPER for the Morpheus AI project
       </div>
       <GithubLoginButton />
     </main>
