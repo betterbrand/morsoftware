@@ -41,6 +41,13 @@ export async function getUserByGithubID(githubId: string): Promise<User | null> 
   });
 }
 
+export async function updateUserEmail(userId: number, email: string): Promise<User> {
+  return prisma.user.update({
+    where: { id: userId },
+    data: { email },
+  });
+}
+
 /**
  * generateDeveloperId generates a new random developerId for a user.
  * 

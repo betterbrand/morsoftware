@@ -22,6 +22,7 @@ async function fetchUserData() {
   }
 
   return {
+    id: user.id,
     developerId: user.developerId,
     email: user.email,
     // Add other user data fields as needed

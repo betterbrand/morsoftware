@@ -9,13 +9,14 @@ import EmailPanel from './components/EmailPanel';
 import SectionHeader from './components/SectionHeader';
 import SubsectionHeader from './components/SubsectionHeader';
 import AddButton from './components/AddButton';
+import { updateEmail } from './actions';
 
 type MainPanelProps = {
   setSelectedPanel: (panel: string) => void;
   userData: {
+    id: number;
     developerId: string;
     email: string | null;
-    // Add other user data fields as needed
   };
 };
 
@@ -37,12 +38,13 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
       </div>
       <div>
         <SubsectionHeader header="Email Address" />
-        <AddButton
-          text="Set Email Address"
-          onClick={() => {
-            setSelectedPanel(PANELS.EMAIL);
-          }}
-        />
+        {email ? <div>{email}</div> : null}
+          <AddButton
+            text="Set Email Address"
+            onClick={() => {
+              setSelectedPanel(PANELS.EMAIL);
+            }}
+          />
       </div>
       <div>
         <SubsectionHeader header="Weight Count" />
@@ -56,17 +58,35 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
 
 const SettingsPageClient = ({ userData }: { userData: any }) => {
   const [selectedPanel, setSelectedPanel] = useState(PANELS.MAIN);
+  const [userDataState, setUserDataState] = useState(userData);
+
+  const handleEmailUpdate = async (formData: FormData) => {
+    const email = formData.get('new-email') as string;
+    const result = await updateEmail(userData.id, email);
+    if (result.success) {
+      setUserDataState({ ...userDataState, email });
+      setSelectedPanel(PANELS.MAIN);
+    } else {
+      console.error('Failed to update email:', result.error);
+    }
+  };
 
   return (
     <Card className="py-3 px-8 max-w-[880px] h-screen max-h-[600px] overflow-y-scroll bg-slate-900">
       {selectedPanel === PANELS.MAIN && (
-        <MainPanel setSelectedPanel={setSelectedPanel} userData={userData} />
+        <MainPanel
+          setSelectedPanel={setSelectedPanel}
+          userData={userDataState}
+        />
       )}
       {selectedPanel === PANELS.PASSWORD && (
         <PasswordPanel setSelectedPanel={setSelectedPanel} />
       )}
       {selectedPanel === PANELS.EMAIL && (
-        <EmailPanel setSelectedPanel={setSelectedPanel} />
+        <EmailPanel
+          setSelectedPanel={setSelectedPanel}
+          onSubmit={handleEmailUpdate}
+        />
       )}
     </Card>
   );
