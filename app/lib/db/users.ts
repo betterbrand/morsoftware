@@ -19,8 +19,6 @@ const prisma = new PrismaClient({ adapter, log: ['query', 'info', 'warn', 'error
  * @returns 
  */
 export async function createUserIfNotExists(githubId: string): Promise<User> {
-  console.log('createUserIfNotExists', githubId);
-  console.log('connectionString', connectionString);
   const existingUser = await prisma.user.findUnique({
     where: { githubId },
   });
