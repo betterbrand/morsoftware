@@ -16,12 +16,13 @@ type MainPanelProps = {
   userData: {
     id: number;
     developerId: string;
+    githubId: string;
     email: string | null;
   };
 };
 
 const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
-  const { developerId, email } = userData;
+  const { developerId, githubId, email } = userData;
 
   return (
     <div className="flex flex-col gap-8">
@@ -34,6 +35,12 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
         <div className="flex items-center">
           <UserCircleIcon className="block h-10 w-10 mr-4" aria-hidden="true" />
           <div>{developerId}</div>
+        </div>
+      </div>
+      <div>
+        <SubsectionHeader header="Github ID" />
+        <div className="flex items-center">
+          <div>{githubId}</div>
         </div>
       </div>
       <div>
