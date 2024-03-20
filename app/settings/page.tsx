@@ -1,6 +1,6 @@
 import { auth } from '../auth';
 import { getUserByGithubID } from '../lib/db/users';
-import SettingsPageClient from './settings-page-client';
+import SettingsPageClient from './SettingsPageClient';
 
 async function fetchUserData() {
   const session = await auth();
