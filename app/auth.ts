@@ -15,18 +15,12 @@ export const {
     })
   ],
   callbacks: {
-    async jwt({ token, user, account, profile, isNewUser }) {
-      if (account?.provider === 'github') {
-        token.githubId = profile?.login?.toString();
+    async signIn({ user, account, profile, email }) {
+      if (account?.provider === 'github' && profile?.login) {
+        await createUserIfNotExists(profile?.login?.toString());
       }
-      return token;
+      return true;
     },
-    async session({ session, token }) {
-      if (token.githubId) {
-        await createUserIfNotExists(token.githubId.toString());
-      }
-      return session;
-    }
   }
 });
 

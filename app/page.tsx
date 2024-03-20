@@ -4,8 +4,6 @@ import Image from 'next/image';
 import GithubCatLogoWhite from './public/images/github-cat-logo-white.svg';
 import MorLogo from './public/images/mor-logo.svg';
 
-import { signIn } from 'next-auth/react';
-
 import GithubLoginButton from './components/githubLoginButton';
 import { auth } from './auth';
 import { redirect } from 'next/navigation';

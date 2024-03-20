@@ -1,19 +1,26 @@
 /**
  * This file contains the functions to interact with the database for the users table.
  */
+import { Pool, neonConfig } from '@neondatabase/serverless'
 import { PrismaClient, User } from '@prisma/client';
+import { PrismaNeon } from '@prisma/adapter-neon'
 
-const prisma = new PrismaClient();
+neonConfig.webSocketConstructor = WebSocket // TODO: import ws from 'ws' was not working
+const connectionString = `${process.env.POSTGRES_PRISMA_URL}`
+
+const pool = new Pool({ connectionString })
+const adapter = new PrismaNeon(pool)
+const prisma = new PrismaClient({ adapter, log: ['query', 'info', 'warn', 'error'],})
 
 /**
  * createUserIfNotExists creates a new user if the user does not exist.
  * 
- * @param user 
+ * @param githubId 
  * @returns 
  */
 export async function createUserIfNotExists(githubId: string): Promise<User> {
   const existingUser = await prisma.user.findUnique({
-    where: { githubId: githubId },
+    where: { githubId },
   });
 
   if (!existingUser) {
