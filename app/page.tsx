@@ -1,5 +1,5 @@
 import BackgroundVideo from './public/videos/black_background.mp4';
-import GithubLoginButton from './components/githubLoginButton';
+import GithubLoginButton from './components/GithubLoginButton';
 import BackgroundImage from './public/images/black-background.jpg';
 import { auth } from './auth';
 import { redirect } from 'next/navigation';
