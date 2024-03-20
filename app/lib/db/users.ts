@@ -35,6 +35,12 @@ export async function createUserIfNotExists(githubId: string): Promise<User> {
   return existingUser;
 }
 
+export async function getUserByGithubID(githubId: string): Promise<User | null> {
+  return prisma.user.findUnique({
+    where: { githubId },
+  });
+}
+
 /**
  * generateDeveloperId generates a new random developerId for a user.
  * 

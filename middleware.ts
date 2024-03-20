@@ -14,7 +14,6 @@ export default async function middleware(req: NextRequest) {
 
   // FIGURE OUT HOW TO MAKE THIS WORK
   // if (session?.user && currentPath === '/') {
-  //   console.log();
   //   return NextResponse.redirect(
   //     new URL('/settings', req.url)
   //   );
