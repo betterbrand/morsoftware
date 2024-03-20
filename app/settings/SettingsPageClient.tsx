@@ -39,7 +39,9 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
         <SubsectionHeader header="Email Address" />
         <AddButton
           text="Set Email Address"
-          onClick={() => {}}
+          onClick={() => {
+            setSelectedPanel(PANELS.EMAIL);
+          }}
         />
       </div>
       <div>
@@ -48,10 +50,6 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
           <div>Coming Soon</div>
         </div>
       </div>
-      <SectionHeader
-        header="Security"
-        subheader="Manage your security preferences"
-      />
     </div>
   );
 };
@@ -61,16 +59,16 @@ const SettingsPageClient = ({ userData }: { userData: any }) => {
 
   return (
     <Card className="py-3 px-8 max-w-[880px] h-screen max-h-[600px] overflow-y-scroll bg-slate-900">
-    {selectedPanel === PANELS.MAIN && (
-      <MainPanel setSelectedPanel={setSelectedPanel} userData={userData} />
-    )}
-    {selectedPanel === PANELS.PASSWORD && (
-      <PasswordPanel setSelectedPanel={setSelectedPanel} />
-    )}
-    {selectedPanel === PANELS.EMAIL && (
-      <EmailPanel setSelectedPanel={setSelectedPanel} />
-    )}
-  </Card>
+      {selectedPanel === PANELS.MAIN && (
+        <MainPanel setSelectedPanel={setSelectedPanel} userData={userData} />
+      )}
+      {selectedPanel === PANELS.PASSWORD && (
+        <PasswordPanel setSelectedPanel={setSelectedPanel} />
+      )}
+      {selectedPanel === PANELS.EMAIL && (
+        <EmailPanel setSelectedPanel={setSelectedPanel} />
+      )}
+    </Card>
   );
 };
 
