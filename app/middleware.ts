@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from './auth';
 
 export default async function middleware(req: NextRequest) {
-  console.log('middleware!!!!!!!!!!');
   // redirect if the token is invalid
   const currentPath = req.nextUrl.pathname;
 
