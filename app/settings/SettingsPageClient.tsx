@@ -46,12 +46,13 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
       <div>
         <SubsectionHeader header="Email Address" />
         {email ? <div>{email}</div> : null}
-          <AddButton
-            text="Set Email Address"
-            onClick={() => {
-              setSelectedPanel(PANELS.EMAIL);
-            }}
-          />
+        <div className="h-1" />
+        <AddButton
+          text={email ? 'Change Email Address' : 'Set Email Address'}
+          onClick={() => {
+            setSelectedPanel(PANELS.EMAIL);
+          }}
+        />
       </div>
       <div>
         <SubsectionHeader header="Weight Count" />
@@ -93,6 +94,7 @@ const SettingsPageClient = ({ userData }: { userData: any }) => {
         <EmailPanel
           setSelectedPanel={setSelectedPanel}
           onSubmit={handleEmailUpdate}
+          email={userDataState.email}
         />
       )}
     </Card>
