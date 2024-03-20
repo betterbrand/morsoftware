@@ -8,7 +8,7 @@ import { signIn } from 'next-auth/react';
 const GithubLoginButton = () => {
   const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    signIn('github');
+    signIn('github', { redirect: false });
   };
 
   return (

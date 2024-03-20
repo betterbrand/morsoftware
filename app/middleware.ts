@@ -2,19 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { auth } from './auth';
 
 export default async function middleware(req: NextRequest) {
+  console.log('middleware!!!!!!!!!!');
   // redirect if the token is invalid
   const currentPath = req.nextUrl.pathname;
-
-  if (currentPath.includes('.')) {
-    return NextResponse.next();
-  }
-
-  if (
-    currentPath.startsWith('/favicon.ico') ||
-    currentPath.startsWith('/static')
-  ) {
-    return NextResponse.next();
-  }
 
   const session = await auth();
 
@@ -34,5 +24,5 @@ export default async function middleware(req: NextRequest) {
 
 // needed to fix error https://stackoverflow.com/questions/73229148/uncaught-syntaxerror-expected-expression-got-while-using-next-js-middlewar
 export const config = {
-  matcher: ['/((?!_next|api/auth).*)(.+)']
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
 };

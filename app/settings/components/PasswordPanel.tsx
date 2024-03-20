@@ -45,22 +45,6 @@ const PasswordPanel = ({ setSelectedPanel }: PasswordPanelProps) => {
           />
         </div>
       </div>
-      {/* <div className="flex items-start mb-6">
-        <div className="flex items-center h-5">
-          <input
-            id="signout"
-            name="signout"
-            type="checkbox"
-            checked
-            className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-          />
-        </div>
-        <div className="ml-3 text-sm">
-          <label htmlFor="signout" className="font-medium text-gray-700">
-            Sign out of all other devices
-          </label>
-        </div>
-      </div> */}
 
       <div className="flex justify-end">
         <button

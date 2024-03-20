@@ -1,7 +1,4 @@
-import { MouseEvent } from 'react';
-
 import Image from 'next/image';
-import GithubCatLogoWhite from './public/images/github-cat-logo-white.svg';
 import MorLogo from './public/images/mor-logo.svg';
 
 import GithubLoginButton from './components/githubLoginButton';

@@ -14,15 +14,15 @@ export const {
       clientSecret: process.env.OAUTH_CLIENT_SECRET as string
     })
   ],
-  callbacks: {
-    async signIn({ user, account, profile, email }) {
-      if (account?.provider === 'github' && profile?.login) {
-        await createUserIfNotExists(profile?.login?.toString());
+    callbacks: {
+      async signIn({ user, account, profile, email }) {
+        if (account?.provider === 'github' && profile?.login) {
+          await createUserIfNotExists(profile?.login?.toString());
+        }
+        return true;
       }
-      return true;
-    },
-  }
-});
+    }
+  });
 
 export function withAuth(handler: (req: NextRequest, session: Session) => Promise<NextResponse>) {
   return async function (request: NextRequest) {
