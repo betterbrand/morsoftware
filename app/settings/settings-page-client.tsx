@@ -11,6 +11,7 @@ import SubsectionHeader from './components/SubsectionHeader';
 import AddButton from './components/AddButton';
 
 type MainPanelProps = {
+  setSelectedPanel: (panel: string) => void;
   userData: {
     developerId: string;
     email: string | null;
@@ -18,7 +19,7 @@ type MainPanelProps = {
   };
 };
 
-const MainPanel = ({ userData }: MainPanelProps) => {
+const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
   const { developerId, email } = userData;
 
   return (
@@ -60,11 +61,16 @@ const SettingsPageClient = ({ userData }: { userData: any }) => {
 
   return (
     <Card className="py-3 px-8 max-w-[880px] h-screen max-h-[600px] overflow-y-scroll bg-slate-900">
-      <MainPanel userData={userData} />
-      {selectedPanel === PANELS.EMAIL && (
-        <EmailPanel setSelectedPanel={setSelectedPanel} />
-      )}
-    </Card>
+    {selectedPanel === PANELS.MAIN && (
+      <MainPanel setSelectedPanel={setSelectedPanel} userData={userData} />
+    )}
+    {selectedPanel === PANELS.PASSWORD && (
+      <PasswordPanel setSelectedPanel={setSelectedPanel} />
+    )}
+    {selectedPanel === PANELS.EMAIL && (
+      <EmailPanel setSelectedPanel={setSelectedPanel} />
+    )}
+  </Card>
   );
 };
 
