@@ -39,7 +39,7 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
         <SubsectionHeader header="Email Address" />
         <AddButton
           text="Set Email Address"
-          onClick={() => {}}
+          onClick={() => {setSelectedPanel(PANELS.EMAIL)}}
         />
       </div>
       <div>
