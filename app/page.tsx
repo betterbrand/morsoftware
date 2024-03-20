@@ -32,10 +32,10 @@ export default async function IndexPage({
         MOR Software
       </div>
       <div className="text-base text-gray-400 text-center">
-        Become a contributor to the future of open source AI development
+        Become a contributor to the future of open source AI development.
       </div>
       <div className="text-base mb-12 text-gray-400 text-center">
-        Sign into github to register as a DEVELOPER for the Morpheus AI project
+        Sign in to Github to register as a code contributor for the Morpheus AI project.
       </div>
       <GithubLoginButton />
     </main>
