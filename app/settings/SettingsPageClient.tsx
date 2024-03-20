@@ -32,8 +32,8 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
       />
       <div>
         <SubsectionHeader header="Developer ID" />
-        <div className="flex items-center">
-          <UserCircleIcon className="block h-10 w-10 mr-4" aria-hidden="true" />
+        <div className="flex items-center break-all">
+          <UserCircleIcon className="hidden sm:block h-10 w-10 mr-4" aria-hidden="true" />
           <div>{developerId}</div>
         </div>
       </div>
