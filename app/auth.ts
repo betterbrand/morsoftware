@@ -20,8 +20,17 @@ export const {
           await createUserIfNotExists(profile?.login?.toString());
         }
         return true;
+      },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      if (account?.provider === 'github') {
+        token.githubId = profile?.login?.toString();
       }
-    }
+      return token
+    },
+    async session({ session, token }) {
+      session.user = token;
+      return session;
+    }}
   });
 
 export function withAuth(handler: (req: NextRequest, session: Session) => Promise<NextResponse>) {
