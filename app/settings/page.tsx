@@ -9,7 +9,13 @@ async function fetchUserData() {
     return null;
   }
 
-  const user = await getUserByGithubID((session.user as any).githubId);
+  const githubId = (session.user as any).githubId;
+  if (!githubId) {
+    console.error('Github ID not found in settings page');
+    return null;
+  }
+
+  const user = await getUserByGithubID(githubId);
   if (!user) {
     console.error('User not found in settings page');
     return null;
