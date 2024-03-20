@@ -22,7 +22,6 @@ const SignupForm = ({
   } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
     setSelectedPanel(PANELS.GITHUB);
     setSignupFormFields((prevFormData) => ({ ...prevFormData, ...data }));
   };
