@@ -28,7 +28,7 @@ export default async function IndexPage({
       <Image src={MorLogo} alt="MOR logo" height={200} className="mb-8" />
       <div className="text-3xl font-bold mb-14">MOR Software</div>
       <div className="text-base">
-        Become a contributor to the future of open source something something
+        Become a contributor to the future of open source AI development
       </div>
       <div className="text-base mb-12">
         Sign into github to register as a DEVELOPER for the Morpheus AI project
