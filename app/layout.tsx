@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={classNames('h-full', inter.className)}>
-      <body className="h-full flex flex-col bg-black text-white">
+      <body className="h-full flex flex-col bg-gray-100 text-gray-500">
         <Suspense>
           <Nav />
         </Suspense>

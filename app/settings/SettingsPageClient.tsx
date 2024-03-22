@@ -26,10 +26,7 @@ const MainPanel = ({ userData, setSelectedPanel }: MainPanelProps) => {
 
   return (
     <div className="flex flex-col gap-8">
-      <SectionHeader
-        header="Account"
-        subheader="Manage your account information"
-      />
+      <SectionHeader header="Account" subheader="Manage your account information" />
       <div>
         <SubsectionHeader header="Developer ID" />
         <div className="flex items-center break-all">
@@ -80,7 +77,7 @@ const SettingsPageClient = ({ userData }: { userData: any }) => {
   };
 
   return (
-    <Card className="py-3 px-8 max-w-[880px] h-screen max-h-[600px] overflow-y-scroll bg-slate-900">
+    <Card className="py-6 px-8 max-w-[880px] bg-white shadow-md rounded-lg">
       {selectedPanel === PANELS.MAIN && (
         <MainPanel
           setSelectedPanel={setSelectedPanel}
