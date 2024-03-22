@@ -77,24 +77,23 @@ const SettingsPageClient = ({ userData }: { userData: any }) => {
   };
 
   return (
-    <Card className="py-6 px-8 max-w-[880px] bg-white shadow-md rounded-lg">
-      {selectedPanel === PANELS.MAIN && (
-        <MainPanel
-          setSelectedPanel={setSelectedPanel}
-          userData={userDataState}
-        />
-      )}
-      {selectedPanel === PANELS.PASSWORD && (
-        <PasswordPanel setSelectedPanel={setSelectedPanel} />
-      )}
-      {selectedPanel === PANELS.EMAIL && (
-        <EmailPanel
-          setSelectedPanel={setSelectedPanel}
-          onSubmit={handleEmailUpdate}
-          email={userDataState.email}
-        />
-      )}
-    </Card>
+    <main className="p-4 md:p-10 flex justify-center">
+      <Card className="py-6 px-8 max-w-[880px] bg-white shadow-md rounded-lg">
+        {selectedPanel === PANELS.MAIN && (
+          <MainPanel setSelectedPanel={setSelectedPanel} userData={userDataState} />
+        )}
+        {selectedPanel === PANELS.PASSWORD && (
+          <PasswordPanel setSelectedPanel={setSelectedPanel} />
+        )}
+        {selectedPanel === PANELS.EMAIL && (
+          <EmailPanel
+            setSelectedPanel={setSelectedPanel}
+            onSubmit={handleEmailUpdate}
+            email={userDataState.email}
+          />
+        )}
+      </Card>
+    </main>
   );
 };
 
