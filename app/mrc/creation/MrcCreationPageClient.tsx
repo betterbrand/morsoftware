@@ -1,8 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { UserCircleIcon } from '@heroicons/react/24/outline';
-import { Card } from '@tremor/react';
+
 import MDEditor from '@uiw/react-md-editor';
 
 type MainPanelProps = {
@@ -15,9 +14,7 @@ type MainPanelProps = {
   };
 };
 
-const WcsCreationPageClient = () => {
-  // const [selectedPanel, setSelectedPanel] = useState(PANELS.MAIN);
-  // const [userDataState, setUserDataState] = useState(userData);
+const MrcCreationPageClient = () => {
   const [editorValue, setEditorValue] = useState<
     string | undefined
   >(`# Proposal Title
@@ -48,7 +45,7 @@ const WcsCreationPageClient = () => {
   return (
     <div className="max-w-[1000px] overflow-y-scroll">
       <div className="text-3xl font-semibold mb-8">
-        Create your own WCS proposal
+        Create your own Mrc proposal
       </div>
 
       <div>
@@ -73,7 +70,6 @@ const WcsCreationPageClient = () => {
       />
 
       <button
-        // disabled={emailInputVal === email || emailInputVal === ''}
         type="submit"
         className={
           'inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-indigo-600 hover:bg-indigo-700 mt-4'
@@ -81,9 +77,8 @@ const WcsCreationPageClient = () => {
       >
         Submit
       </button>
-      {/* <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} /> */}
     </div>
   );
 };
 
-export default WcsCreationPageClient;
+export default MrcCreationPageClient;
