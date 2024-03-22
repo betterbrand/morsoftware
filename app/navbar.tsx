@@ -11,8 +11,8 @@ import Image from 'next/image';
 import DarkLogo from './public/images/dark-logo.png';
 
 const navigation = [
-  // { name: 'Leaderboard', href: '/code-providers/leaderboard' },
-  // { name: 'Calculator', href: '/code-providers/calculator' }
+  { name: 'Leaderboard', href: '/code-providers/leaderboard' },
+  { name: 'Calculator', href: '/code-providers/calculator' }
 ];
 
 const not_logged_in_navigation = [
@@ -109,7 +109,7 @@ export default function Navbar({ user }: { user: any }) {
                 <div className="flex flex-shrink-0 items-center">
                   <Image src={DarkLogo} alt="Logo" width={32} height={32} />
                 </div>
-                <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                {/* <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => {
                     if (item.name === 'Code Providers') {
                       return (
@@ -192,7 +192,7 @@ export default function Navbar({ user }: { user: any }) {
                       </a>
                     );
                   })}
-                </div>
+                </div> */}
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <Menu as="div" className="relative ml-3 z-20">
