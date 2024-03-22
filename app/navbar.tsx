@@ -11,8 +11,8 @@ import Image from 'next/image';
 import DarkLogo from './public/images/dark-logo.png';
 
 const navigation = [
-  { name: 'Leaderboard', href: '/code-providers/leaderboard' },
-  { name: 'Calculator', href: '/code-providers/calculator' }
+  // { name: 'Leaderboard', href: '/code-providers/leaderboard' },
+  // { name: 'Calculator', href: '/code-providers/calculator' }
 ];
 
 const not_logged_in_navigation = [
