@@ -11,8 +11,8 @@ import Image from 'next/image';
 import DarkLogo from './public/images/dark-logo.png';
 
 const navigation = [
-  { name: 'Leaderboard', href: '/code-providers/leaderboard' },
-  { name: 'Calculator', href: '/code-providers/calculator' }
+  { name: 'View MRCs', href: '/mrc/all' },
+  { name: 'Create MRC', href: '/mrc/creation' }
 ];
 
 const not_logged_in_navigation = [
@@ -100,7 +100,7 @@ export default function Navbar({ user }: { user: any }) {
   }
 
   return (
-    <Disclosure as="nav" className=" shadow-sm flex justify-center">
+    <Disclosure as="nav" className="sticky top-0 sm:relative shadow-sm flex justify-center">
       {({ open }) => (
         <>
           <div className="max-w-7xl w-full px-4 sm:px-6 lg:px-8">
@@ -109,7 +109,7 @@ export default function Navbar({ user }: { user: any }) {
                 <div className="flex flex-shrink-0 items-center">
                   <Image src={DarkLogo} alt="Logo" width={32} height={32} />
                 </div>
-                {/* <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => {
                     if (item.name === 'Code Providers') {
                       return (
@@ -180,8 +180,8 @@ export default function Navbar({ user }: { user: any }) {
                         href={item.href}
                         className={classNames(
                           pathname === item.href
-                            ? 'border-slate-500 text-white'
-                            : 'border-transparent text-gray-500 hover:text-white hover:border-gray-300',
+                            ? 'border-slate-500 text-black'
+                            : 'border-transparent text-gray-500 hover:text-black hover:border-gray-300',
                           'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
                         )}
                         aria-current={
@@ -192,7 +192,7 @@ export default function Navbar({ user }: { user: any }) {
                       </a>
                     );
                   })}
-                </div> */}
+                </div>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <Menu as="div" className="relative ml-3 z-20">
@@ -281,7 +281,7 @@ export default function Navbar({ user }: { user: any }) {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            {/* <div className="space-y-1 pt-2 pb-3">
+            <div className="space-y-1 pt-2 pb-3">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -298,7 +298,7 @@ export default function Navbar({ user }: { user: any }) {
                   {item.name}
                 </Disclosure.Button>
               ))}
-            </div> */}
+            </div>
             <div className="border-t border-gray-200 pt-4 pb-3">
               {user ? (
                 <>
