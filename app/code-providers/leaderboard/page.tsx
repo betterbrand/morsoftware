@@ -41,7 +41,6 @@ export default function CodeProvidersPage() {
   return (
     <main className={classNames('p-4 md:p-10 w-full grow overflow-y-scroll')}>
       <div className="max-w-[600px] mx-auto">
-        IN DEVELOPMENT
         <div className="flex justify-center mb-4" role="group">
           <div
             onClick={() => setSelectedTab(TABS.TOP_20)}
