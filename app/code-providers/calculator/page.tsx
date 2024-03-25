@@ -14,6 +14,7 @@ export default function CalculatorPage() {
 
   return (
     <main className="p-4 md:p-10 mx-auto max-w-7xl">
+      IN DEVELOPMENT
       <div className="max-w-[1080px] mx-auto">
         <div className="flex justify-center text-2xl mb-4 text-gray-500">Code Weights</div>
         <form
