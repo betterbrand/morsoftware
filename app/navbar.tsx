@@ -12,7 +12,8 @@ import DarkLogo from './public/images/dark-logo.png';
 
 const navigation = [
   { name: 'Leaderboard', href: '/code-providers/leaderboard' },
-  { name: 'Calculator', href: '/code-providers/calculator' }
+  { name: 'Calculator', href: '/code-providers/calculator' },
+  { name: 'MRCs', href: '/mrc' }
 ];
 
 const not_logged_in_navigation = [
@@ -108,6 +109,90 @@ export default function Navbar({ user }: { user: any }) {
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
                   <Image src={DarkLogo} alt="Logo" width={32} height={32} />
+                </div>
+                <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                  {navigation.map((item) => {
+                    if (item.name === 'MRCs') {
+                      return (
+                        <Menu
+                          key={item.name}
+                          as="div"
+                          className="relative ml-3 "
+                        >
+                          <Menu.Button
+                            className={classNames(
+                              pathname.includes(item.href)
+                                ? 'border-slate-500'
+                                : 'border-transparent hover:text-gray-200 hover:border-gray-300',
+                              'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium h-full'
+                            )}
+                          >
+                            <span className="sr-only">
+                              Open code providers menu
+                            </span>
+                            {item.name}
+                          </Menu.Button>
+                          <Transition
+                            as={Fragment}
+                            enter="transition ease-out duration-200"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                          >
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <Link href="/mrc/all">
+                                    <button
+                                      className={classNames(
+                                        active ? 'bg-gray-100' : '',
+                                        'flex w-full px-4 py-2 text-sm text-gray-700'
+                                      )}
+                                    >
+                                      List MRCs
+                                    </button>
+                                  </Link>
+                                )}
+                              </Menu.Item>
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <Link href="/mrc/creation">
+                                    <button
+                                      className={classNames(
+                                        active ? 'bg-gray-100' : '',
+                                        'flex w-full px-4 py-2 text-sm text-gray-700'
+                                      )}
+                                    >
+                                      Create MRC
+                                    </button>
+                                  </Link>
+                                )}
+                              </Menu.Item>
+                            </Menu.Items>
+                          </Transition>
+                        </Menu>
+                      );
+                    }
+                    return (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        className={classNames(
+                          pathname === item.href
+                            ? 'border-slate-500'
+                            : 'border-transparent text-gray-500 hover:border-gray-300',
+                          'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
+                        )}
+                        aria-current={
+                          pathname === item.href ? 'page' : undefined
+                        }
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  })}
                 </div>
                 {/* <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => {
