@@ -12,8 +12,7 @@ import DarkLogo from './public/images/dark-logo.png';
 
 const navigation = [
   { name: 'Leaderboard', href: '/code-providers/leaderboard' },
-  { name: 'Calculator', href: '/code-providers/calculator' },
-  { name: 'MRCs', href: '/mrc' }
+  { name: 'Calculator', href: '/code-providers/calculator' }
 ];
 
 const not_logged_in_navigation = [
@@ -110,9 +109,9 @@ export default function Navbar({ user }: { user: any }) {
                 <div className="flex flex-shrink-0 items-center">
                   <Image src={DarkLogo} alt="Logo" width={32} height={32} />
                 </div>
-                <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
+                {/* <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => {
-                    if (item.name === 'MRCs') {
+                    if (item.name === 'Code Providers') {
                       return (
                         <Menu
                           key={item.name}
@@ -122,8 +121,8 @@ export default function Navbar({ user }: { user: any }) {
                           <Menu.Button
                             className={classNames(
                               pathname.includes(item.href)
-                                ? 'border-slate-500'
-                                : 'border-transparent hover:text-gray-200 hover:border-gray-300',
+                                ? 'border-slate-500 text-white'
+                                : 'border-transparent text-white hover:text-gray-200 hover:border-gray-300',
                               'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium h-full'
                             )}
                           >
@@ -141,31 +140,31 @@ export default function Navbar({ user }: { user: any }) {
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                           >
-                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                               <Menu.Item>
                                 {({ active }) => (
-                                  <Link href="/mrc/all">
+                                  <Link href="/code-providers/leaderboard">
                                     <button
                                       className={classNames(
                                         active ? 'bg-gray-100' : '',
                                         'flex w-full px-4 py-2 text-sm text-gray-700'
                                       )}
                                     >
-                                      List MRCs
+                                      Leaderboard
                                     </button>
                                   </Link>
                                 )}
                               </Menu.Item>
                               <Menu.Item>
                                 {({ active }) => (
-                                  <Link href="/mrc/creation">
+                                  <Link href="/code-providers/calculator">
                                     <button
                                       className={classNames(
                                         active ? 'bg-gray-100' : '',
                                         'flex w-full px-4 py-2 text-sm text-gray-700'
                                       )}
                                     >
-                                      Create MRC
+                                      Calculator
                                     </button>
                                   </Link>
                                 )}
@@ -181,8 +180,8 @@ export default function Navbar({ user }: { user: any }) {
                         href={item.href}
                         className={classNames(
                           pathname === item.href
-                            ? 'border-slate-500'
-                            : 'border-transparent text-gray-500 hover:border-gray-300',
+                            ? 'border-slate-500 text-white'
+                            : 'border-transparent text-gray-500 hover:text-white hover:border-gray-300',
                           'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium'
                         )}
                         aria-current={
@@ -193,7 +192,7 @@ export default function Navbar({ user }: { user: any }) {
                       </a>
                     );
                   })}
-                </div>
+                </div> */}
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <Menu as="div" className="relative ml-3 z-20">
