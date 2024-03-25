@@ -52,6 +52,96 @@ const tableData: TableEntry[] = [
     number: 2,
     title: 'Homestead Hard-fork Changes',
     author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
+  },
+  {
+    number: 2,
+    title: 'Homestead Hard-fork Changes',
+    author: 'Vitalik Buterin (@vbuterin)'
   }
 
   // ... add other rows here
