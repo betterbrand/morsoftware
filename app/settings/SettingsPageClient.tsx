@@ -77,7 +77,7 @@ const SettingsPageClient = ({ userData }: { userData: any }) => {
   };
 
   return (
-    <main className="p-4 md:p-10 flex justify-center">
+    <main className="p-4 md:p-10 flex justify-center z-[-1]">
       <Card className="py-8 px-10 max-w-[880px] bg-white shadow-sm rounded-lg">
         {selectedPanel === PANELS.MAIN && (
           <MainPanel setSelectedPanel={setSelectedPanel} userData={userDataState} />

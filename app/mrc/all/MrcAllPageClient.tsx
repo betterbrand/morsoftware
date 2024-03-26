@@ -149,7 +149,7 @@ const tableData: TableEntry[] = [
 
 const MrcAllPageClient = () => {
   return (
-    <div className="max-w-[1000px] w-3/4 overflow-y-scroll">
+    <div className="max-w-[1000px] w-3/4">
       <div className="text-3xl font-semibold mb-8">All Proposals</div>
 
       <div className="container mx-auto">

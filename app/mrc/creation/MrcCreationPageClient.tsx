@@ -55,9 +55,9 @@ const MrcCreationPageClient = () => {
   // };
 
   return (
-    <div className="max-w-[1000px] overflow-y-scroll">
+    <div className="max-w-[1000px]">
       <div className="text-3xl font-semibold mb-8">
-        Create your own Mrc proposal
+        Create your own MRC proposal
       </div>
 
       <div className="text-2xl font-semibold mb-2">Title</div>
