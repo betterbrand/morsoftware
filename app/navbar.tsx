@@ -124,7 +124,7 @@ export default function Navbar({ user }: { user: any }) {
   return (
     <Disclosure
       as="nav"
-      className="sticky top-0 sm:relative shadow-sm flex justify-center bg-gray-100"
+      className="sticky top-0 sm:relative shadow-sm flex justify-center bg-gray-100 z-[1]"
     >
       {({ open }) => (
         <>
